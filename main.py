@@ -28,3 +28,8 @@ async def send_message(message: Message, user_message: str)-> None:
 
     except Exception as e:
         print(e)
+
+# STEP 3: HANDLING THE STARTUP FOR OUR BOT
+@Client.event
+async def on_ready() -> None:
+    print(f'{client.user} is now running')
