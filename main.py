@@ -30,6 +30,18 @@ async def send_message(message: Message, user_message: str)-> None:
         print(e)
 
 # STEP 3: HANDLING THE STARTUP FOR OUR BOT
-@Client.event
+@client.event
 async def on_ready() -> None:
     print(f'{client.user} is now running')
+
+# STEP 4: HANDLING INCOMING MESSAGES
+@client.event
+async def on_message(message: Message) -> None:
+    if message.author == client.user:
+        return
+    username: str = str(message.author)
+    user_message: str = str(message.content)
+    channel: str = str(message.channel)
+
+    print(f'[{channel}{username}:"{user_message}"]')
+    await send_message(message, user_message)
