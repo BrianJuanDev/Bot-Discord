@@ -24,7 +24,7 @@ async def send_message(message: Message, user_message: str)-> None:
 
     try:
         response: str = get_response(user_message)
-        await message.author.send(response) if is_private else message.channel.send(response)
+        await message.author.send(response) if is_private else await message.channel.send(response)
 
     except Exception as e:
         print(e)
@@ -49,4 +49,6 @@ async def on_message(message: Message) -> None:
 # STEP 5: MAIN ENTRY POINT 
 def main() -> None:
     client.run(token=TOKEN)
-    
+
+if __name__ == '__main__':
+    main()
