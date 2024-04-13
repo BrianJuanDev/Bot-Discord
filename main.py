@@ -45,3 +45,8 @@ async def on_message(message: Message) -> None:
 
     print(f'[{channel}{username}:"{user_message}"]')
     await send_message(message, user_message)
+
+# STEP 5: MAIN ENTRY POINT 
+def main() -> None:
+    client.run(token=TOKEN)
+    
